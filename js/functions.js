@@ -71,9 +71,13 @@ function removeNumbersFromString(str) {
     str = String(str); // превращаю число в строку
   }
 
-  let num = parseInt(str.replace(/\D+/g, '')); // заменить в строке всё что не цифры (\D) на ''  и преобразовать в число.
+  let num = parseInt(str.replace(/\D+/g, ''), 10); // заменить в строке всё что не цифры (\D) на ''  и преобразовать в число.
+
+  // let num = str.replace(/\D+/g, ''); // заменить в строке всё что не цифры (\D) на ''  и преобразовать в число.
+  // num = parseInt(str, 10);
   // console.log('num: ' + num);
 
+  num = num + 0;
   return num;
 }
 
