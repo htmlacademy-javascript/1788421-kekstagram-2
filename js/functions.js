@@ -35,6 +35,7 @@ function checkingPalindrom(str) {
   newStr = str.replaceAll(' ', '');
   newStr = newStr.toLowerCase();
 
+  let strNorm = newStr;
 
   // переворот строки
 
@@ -47,11 +48,11 @@ function checkingPalindrom(str) {
   // Преобразуем массив в строку
   newStr = newStr.join(''); // акортс
 
-  if (str === newStr) {
-    console.log("строка:  \'" + newStr + " \' - палиндром");
+  if (strNorm === newStr) {
+    console.log("строка:  \'" + str + "\' - палиндром");
     return true;
   }
-  console.log("строка: \'" + str + "\' не палиндром");
+  console.log("строка: \'" + str + "\' - не палиндром");
   return false;
 }
 
@@ -66,14 +67,27 @@ checkingPalindrom(str1);
 
 // вынимаем цифры из строки
 
-function removeNumbersFromString () {
-  // Ищем цифры!
- let num = "Item 123sdfgsdfg111dfgsdfg2222".match(/\d+/g); 
- console.log('задача 3:' + num);
+function removeNumbersFromString(str) {
 
- return num;
+  if (typeof str === "number") {
+    str = String(str); // превращаю число в строку
+  }
+
+  let num = parseInt(str.replace(/\D+/g, "")); // заменить в строке всё что не цифры (\D) на ""  и преобразовать в число.
+  console.log('num: ' + num);
+
+  return num;
 
 }
 
+let str5 = "фываыфвп 1234 вапрапр, 568, asdfgdfgjtymQQQ 9101111"
+let namb = -123.45;
 
-removeNumbersFromString ();
+console.log('тест1: в строке есть цифры')
+removeNumbersFromString(str5);
+
+console.log('тест2: в строке нет цифр')
+removeNumbersFromString (str1);
+
+console.log('тест3:  на входе число')
+removeNumbersFromString(namb);
