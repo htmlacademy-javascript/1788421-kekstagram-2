@@ -71,13 +71,13 @@ function removeNumbersFromString(str) {
     str = String(str); // превращаю число в строку
   }
 
-  let num = parseInt(str.replace(/\D+/g, ''), 10); // заменить в строке всё что не цифры (\D) на ''  и преобразовать в число.
+  let num = 0;
+  num = parseInt(str.replace(/\D+/g, ''), 10); // заменить в строке всё что не цифры (\D) на ''  и преобразовать в число.
 
   // let num = str.replace(/\D+/g, ''); // заменить в строке всё что не цифры (\D) на ''  и преобразовать в число.
   // num = parseInt(str, 10);
   // console.log('num: ' + num);
 
-  num = num + 0;
   return num;
 }
 
@@ -88,7 +88,7 @@ const namb = -123.45;
 removeNumbersFromString(str5);
 
 // console.log('тест2: в строке нет цифр')
-removeNumbersFromString (str1);
+removeNumbersFromString(str1);
 
 // console.log('тест3:  на входе число')
 removeNumbersFromString(namb);
