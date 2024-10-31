@@ -97,6 +97,7 @@ const createIdGenerator = () => {
 };
 
 const generateCommentId = createIdGenerator();
+const generateId = createIdGenerator();
 
 // создание комментария
 const createComment = () => ({
@@ -109,7 +110,7 @@ const createComment = () => ({
 
 // создание объекта
 const createPhoto = (index) => ({
-  id: index,
+  id: generateId,
   url: `photos/${index}.jpg`,
   description: DESCRIPTIONS[index],
   likes: getRandomInteger(LIKES.MIN, LIKES.MAX),
