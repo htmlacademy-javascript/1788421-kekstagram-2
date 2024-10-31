@@ -96,11 +96,11 @@ const createIdGenerator = () => {
   };
 };
 
-const generateRandomId = createIdGenerator();
+const generateCommentId = createIdGenerator();
 
 // создание комментария
 const createComment = () => ({
-  id: generateRandomId(),
+  id: generateCommentId(),
   avatar: `img/avatar-${getRandomInteger(AVA.MIN, AVA.MAX)}.svg`,
   message: createMessage(),
   name: getRandomArrayElement(NAMES),
