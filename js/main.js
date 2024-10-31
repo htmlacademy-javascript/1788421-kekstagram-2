@@ -1,4 +1,4 @@
-const descriptions = [
+const DESCRIPTIONS = [
   "Курорт",
   "указатель пути",
   "Красивый пляж",
@@ -26,7 +26,7 @@ const descriptions = [
   "Вам помочь?"
 ];
 
-const comments = [
+const COMMENTS_ARR = [
   "Всё отлично!",
   "В целом всё неплохо. Но не всё.",
   "Когда вы делаете фотографию, хорошо бы убирать палец из кадра. В конце концов это просто непрофессионально.",
@@ -35,7 +35,7 @@ const comments = [
   "Лица у людей на фотке перекошены, как будто их избивают. Как можно было поймать такой неудачный момент?!"
 ];
 
-const names = [
+const NAMES = [
   "Услада",
   "Полина-Полина",
   "Голуба",
@@ -53,6 +53,16 @@ const names = [
 ];
 
 
+const PHOTOS_COUNT_MAX = 25;
+const likes = {
+MIN: 15,
+MAX: 200
+}
+
+const COMMENT_MAX = 30;
+const AVA_MAX = 6;
+
+
 // функция генерации случайного числа из заданного диапазона
 const getRandomInteger = (a, b) => {
   const lower = Math.ceil(Math.min(a, b));
@@ -66,14 +76,50 @@ const getRandomInteger = (a, b) => {
 const getRandomArrayElement = (elements) => elements[getRandomInteger(0, elements.length - 1)];
 
 
-// создание массива объектов
-const SIMILAR_WIZARD_COUNT = 4
-const similarWizards = Array.from({length: SIMILAR_WIZARD_COUNT}, createWizard);
-
-
 // создание объекта
-const createWizard = () => ({
-  name: `${getRandomArrayElement(NAMES) } ${ getRandomArrayElement(SURNAMES)}`,
-  coatColor: getRandomArrayElement(COAT_COLORS),
-  eyesColor: getRandomArrayElement(EYES_COLORS),
-});
+const createPhoto = () => {
+
+  let i = 1;
+  return () => {
+
+    const numComments = getRandomInteger(0, COMMENT_MAX); // кол-во комментариев
+    const numLikes = getRandomInteger(likes.MIN, likes.MAX); // кол-во лайков
+
+    const photo = {}; // создаю объект 
+
+    photo.id = id; // от 1 до 25
+    photo.url = `photos/${id}.jpg`;
+    photo.descriptor = DESCRIPTIONS[id];
+    photo.likes = numLikes;
+    photo.comments = Array.from({ length: numComments }, createComment());
+
+    id++;
+
+    return photo;
+  }
+};
+
+
+// создание комментария
+const createComment = () => {
+  return () => {
+
+    const numCommentMessage = getRandomInteger(1, 2); // из скольки предложений будет формироваться комментарий
+    const commentId = getRandomInteger(1, 1000);
+    const idAva = getRandomInteger(1, 6);
+
+    const comment = {};
+
+    comment.id = commentId; // не должно повторяться!!!!
+    comment.avatar = `img/avatar-${idAva}.svg`;
+    comment.message = 'надо подумать';
+    comment.name = getRandomArrayElement(NAMES);  // случайный элемент из массива NAMES
+
+    return comment;
+  }
+}
+
+
+// создание массива объектов
+const PhotosArray = Array.from({ length: PHOTOS_COUNT_MAX }, createPhoto);
+console.log(PhotosArray);
