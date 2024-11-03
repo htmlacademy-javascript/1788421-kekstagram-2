@@ -52,4 +52,4 @@ const createWizard = () => ({
 
 const similarWizards = Array.from({length: SIMILAR_WIZARD_COUNT}, createWizard);
 
-console.log(similarWizards);
+// console.log(similarWizards);
