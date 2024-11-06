@@ -1,94 +1,43 @@
-// console.log('hi!');
+const NUMMINUTS = 60;
 
-// проверка длины строки
-function checkingLengthString(str, maxLenght) {
-  if (str.length >= maxLenght) {
-    // console.log('проверка пройдена')
+function convertTimeToMinuts(time) {
+
+  const t = time.split(':');
+
+  const hour = t[0];
+  const minuts = t[1];
+
+  return hour * NUMMINUTS + parseInt(minuts, 10);
+}
+
+function checkMeeting(workStart, workEnd, meetingStart, meeyingDuration) {
+  const wStart = convertTimeToMinuts(workStart);
+  const wEnd = convertTimeToMinuts(workEnd);
+  const meeting = convertTimeToMinuts(meetingStart) + meeyingDuration;
+
+  if (meeting >= wStart && meeting <= wEnd) {
+
+    // console.log('wStart = ' + wStart);
+    // console.log('wEndK =' + wEnd);
+    // console.log('meeting =' + meeting);
+    // console.log('OK');
     return true;
   }
-  // console.log('проверка не пройдена')
+  //  console.log('wStart = ' + wStart);
+  //   console.log('wEndK =' + wEnd);
+  //   console.log('meeting =' + meeting);
+  //  console.log(':((');
   return false;
 }
 
-const str1 = 'это оОООчень длиннннннная строка';
-const str2 = 'строка максимального размера';
-const str3 = 'это короткая строка';
+checkMeeting('08:00', '17:30', '14:00', 90);
+checkMeeting('8:0', '10:0', '8:0', 120);
+checkMeeting('08:00', '14:30', '14:00', 90);
+checkMeeting('14:00', '17:30', '08:0', 90);
+checkMeeting('8:00', '17:30', '08:00', 900);
 
-const maxLen = str2.length;
-
-// console.log('тест1: строка длиннее:')
-checkingLengthString(str1, maxLen);
-
-// console.log('тест2: строка равна:')
-checkingLengthString(str1, maxLen);
-
-// console.log('тест3: строка короче:')
-checkingLengthString(str3, maxLen);
-
-// проверка строки на палиндром
-function checkingPalindrom(str) {
-  let newStr;
-
-  // нормализация строки
-  newStr = str.replaceAll(' ', '');
-  newStr = newStr.toLowerCase();
-
-  const strNorm = newStr;
-
-  // переворот строки
-
-  // Преобразуем строку в массив
-  newStr = newStr.split(''); // ['с', 'т', 'р', 'о', 'к', 'а']
-
-  // Разворачиваем элементы массива
-  newStr.reverse(); // ['а', 'к', 'о', 'р', 'т', 'с']
-
-  // Преобразуем массив в строку
-  newStr = newStr.join(''); // акортс
-
-  if (strNorm === newStr) {
-    // console.log('строка:  \'' + str + '\' - палиндром');
-    return true;
-  }
-  // console.log('строка: \'' + str + '\' - не палиндром');
-  return false;
-}
-
-const str4 = 'А роза упала на лапу Азора';
-
-// console.log('тест1: палиндром')
-checkingPalindrom(str4);
-
-// console.log('тест2: не палиндром')
-checkingPalindrom(str1);
-
-
-// вынимаем цифры из строки
-
-function removeNumbersFromString(str) {
-
-  if (typeof str === 'number') {
-    str = String(str); // превращаю число в строку
-  }
-
-  let num = 0;
-  num = parseInt(str.replace(/\D+/g, ''), 10); // заменить в строке всё что не цифры (\D) на ''  и преобразовать в число.
-
-  // let num = str.replace(/\D+/g, ''); // заменить в строке всё что не цифры (\D) на ''  и преобразовать в число.
-  // num = parseInt(str, 10);
-  // console.log('num: ' + num);
-
-  return num;
-}
-
-const str5 = 'фываыфвп 1234 вапрапр, 568, asdfgdfgjtymQQQ 9101111';
-const namb = -123.45;
-
-// console.log('тест1: в строке есть цифры')
-removeNumbersFromString(str5);
-
-// console.log('тест2: в строке нет цифр')
-removeNumbersFromString(str1);
-
-// console.log('тест3:  на входе число')
-removeNumbersFromString(namb);
+// console.log(checkMeeting('08:00', '17:30', '14:00', 90)); // true
+// console.log(checkMeeting('8:0', '10:0', '8:0', 120));     // true
+// console.log(checkMeeting('08:00', '14:30', '14:00', 90)); // false
+// console.log(checkMeeting('14:00', '17:30', '08:0', 90));  // false
+// console.log(checkMeeting('8:00', '17:30', '08:00', 900)); // false
