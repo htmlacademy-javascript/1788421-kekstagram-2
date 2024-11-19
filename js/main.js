@@ -2,7 +2,11 @@ import './photo-array';
 
 import {
   PhotosArray
-} from './photo-array';
+} from './photo-array.js';
 
-PhotosArray();
+import {generateThumbnails} from './thumbnail.js';
+
+generateThumbnails(PhotosArray());
+
+// PhotosArray();
 // console.log(PhotosArray());

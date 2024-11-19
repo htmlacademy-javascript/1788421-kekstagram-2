@@ -54,7 +54,7 @@ const NAMES = [
   'Дельфин'
 ];
 
-const PHOTOS_COUNT_MAX = 25;
+const PHOTOS_COUNT_MAX = 26;
 const LIKES = {
   MIN: 15,
   MAX: 200
