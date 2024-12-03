@@ -9,4 +9,4 @@ import {generateThumbnails} from './thumbnail.js';
 generateThumbnails(PhotosArray());
 
 // PhotosArray();
-// console.log(PhotosArray());
+console.log(PhotosArray());
