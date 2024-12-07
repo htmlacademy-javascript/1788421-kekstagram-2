@@ -44,9 +44,6 @@ const createPhoto = (index) => ({
 // создание массива объектов
 const PhotosArray = () => Array.from({ length: PHOTOS_COUNT_MAX }, (_, index) => createPhoto(index + 1));
 
-const imgDataArr = PhotosArray();
-// console.log(imgDataArr);
-
 export {
-  imgDataArr
+  PhotosArray
 };

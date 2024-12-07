@@ -1,10 +1,9 @@
 import {
-  imgDataArr
+  PhotosArray
 } from './generateDataArray.js';
 
 import {
   rendsrGallery
 } from './gallery.js';
 
-rendsrGallery(imgDataArr);
-// console.log(imgDataArr);
+rendsrGallery(PhotosArray());
