@@ -2,13 +2,6 @@
 // получаю контент шаблона
 const thumbnailTemplate = document.querySelector('#picture').content;
 
-// куда вставить все готовые фотки
-const container = document.querySelector('.pictures');
-
-// const img = thumbnailTemplate.querySelector('.picture__img');
-// const comm = thumbnailTemplate.querySelector('.picture__comments');
-// const like = thumbnailTemplate.querySelector('.picture__likes');
-
 // функция генгерации  и заполнения элемента из шаблона
 // {деструктуризация - вместо picture}
 const createThumbnail = ({ id, url, description, comments, likes }) => {
@@ -19,10 +12,11 @@ const createThumbnail = ({ id, url, description, comments, likes }) => {
   const img = thumbnail.querySelector('.picture__img');
   const comm = thumbnail.querySelector('.picture__comments');
   const like = thumbnail.querySelector('.picture__likes');
-  const aTumb = thumbnail.querySelector('.picture');
+  const elemTumb = thumbnail.querySelector('.picture');
 
   // заполняю данными шаблон
-  aTumb.dataset.pictureId = id;
+  elemTumb.dataset.pictureId = id;
+  //тегу <a> добавляется дата-атрибут data-picture-id = id элемента
   img.src = url;
   img.alt = description;
   comm.textContent = comments.length;
@@ -31,7 +25,7 @@ const createThumbnail = ({ id, url, description, comments, likes }) => {
 };
 
 //генерирую 25 элементов и отрисовываю их все сразу в ДОМ через фрагмент
-const generateThumbnails = (pictures) => {
+const createMiniImgs = (pictures, container) => {
   const fragment = document.createDocumentFragment();
 
   pictures.forEach((picture) => {
@@ -40,5 +34,4 @@ const generateThumbnails = (pictures) => {
   });
   container.append(fragment);
 };
-export { container,
-  generateThumbnails };
+export { createMiniImgs };

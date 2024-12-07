@@ -1,12 +1,10 @@
-import './photo-array';
+import {
+  imgDataArr
+} from './generateDataArray.js';
 
 import {
-  PhotosArray
-} from './photo-array.js';
+  rendsrGallery
+} from './gallery.js';
 
-import {generateThumbnails} from './thumbnail.js';
-
-generateThumbnails(PhotosArray());
-
-// PhotosArray();
-console.log(PhotosArray());
+rendsrGallery(imgDataArr);
+// console.log(imgDataArr);
