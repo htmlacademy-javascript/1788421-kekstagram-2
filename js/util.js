@@ -20,8 +20,12 @@ function createIdGenerator() {
 // получение случайного элемент из массива - это функция
 const getRandomArrayElement = (elements) => elements[getRandomInteger(0, elements.length - 1)];
 
+//функция проверки нажатия Esc
+const isEscapeKey = (evt) => evt.key === 'Escape';
+
 export {
   getRandomInteger,
   getRandomArrayElement,
-  createIdGenerator
+  createIdGenerator,
+  isEscapeKey
 };

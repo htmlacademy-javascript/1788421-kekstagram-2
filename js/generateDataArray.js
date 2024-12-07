@@ -36,14 +36,13 @@ const createPhoto = (index) => ({
   // url: !undefined ? `photos/${index}.jpg` : `photos/1.jpg` ,
   url: `photos/${index}.jpg`,
 
-  description: DESCRIPTIONS[index],
+  description: DESCRIPTIONS[index - 1], //т.к. при создании массива берем createPhoto(index + 1)
   likes: getRandomInteger(LIKES.MIN, LIKES.MAX),
   comments: Array.from({ length: getRandomInteger(COMMENT.MIN, COMMENT.MAX) }, createComment)
 });
 
 // создание массива объектов
 const PhotosArray = () => Array.from({ length: PHOTOS_COUNT_MAX }, (_, index) => createPhoto(index + 1));
-// console.log(PhotosArray);
 
 export {
   PhotosArray
