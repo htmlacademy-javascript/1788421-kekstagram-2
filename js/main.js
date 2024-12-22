@@ -7,3 +7,6 @@ import {
 } from './gallery.js';
 
 rendsrGallery(PhotosArray());
+
+
+import './upload-photo-form.js';
