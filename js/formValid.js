@@ -1,10 +1,9 @@
-import {
-  uploadForm, // форма
-  hashtagFiled, // поле для хештегов
-  // commentFiled // поле для комментариев
+// import {
+//   uploadForm, // форма
+//   hashtagFiled, // поле для хештегов
+//   // commentFiled // поле для комментариев
 
-} from './upload-photo-form';
-
+// } from './upload-photo-form.js';
 //==========================
 
 // не больше 5 хештегов
@@ -13,22 +12,31 @@ const MAX_HASHTAG_COUNT = 5;
 // максимальная длина хештега
 const MAX_HASHTAG_SYMBOLS = 20;
 
+// максимальная длина комментария
+const MAX_COMMENT_COUNT = 7;
+
 let errMessage = '';
 
 const error = () => errMessage;
 
-const VALID_SYMBOLS = /^#[a-zа-яё0-9]{1,19}$/i;
+// const VALID_SYMBOLS = /^#[a-zа-яё0-9]{1,19}$/i;
+
+const VALID_SYMBOLS = /[a-zа-яё0-9]{1,19}$/i;
 
 //==========================
+
+const uploadForm = document.querySelector('.img-upload__form');
+const hashtagFiled = document.querySelector('.text__hashtags');
+const commentFiled = document.querySelector('.text__description');
 
 const pristine = new Pristine(uploadForm, {
   classTo: 'img-upload__field-wrapper',
   errorClass: 'img-upload__field-wrapper--error',
   errorTextParent: 'img-upload__field-wrapper',
-  errorTextTag: 'p',
-  errorTextClass: 'text-error',
+  // errorTextTag: 'p',
+  // errorTextClass: 'text-error',
 }, true);
-// console.log(pristine);
+console.log(pristine);
 
 //==========================
 const isHashtagsValid = (value) => {
@@ -61,15 +69,16 @@ const isHashtagsValid = (value) => {
     },
 
     {
-      check: inputArray.some((item) => !VALID_SYMBOLS.test(item)),
-      error: `4. Недопустимые символы!`
+      check: inputArray.some((item) => item.length > MAX_HASHTAG_SYMBOLS),
+      error: `4. Длина хештега не больше ${MAX_HASHTAG_SYMBOLS} символов`
     },
+
 
     {
-      check: inputArray.some((item) => item.length > MAX_HASHTAG_SYMBOLS),
-      error: `5. Длина хештега не больше ${MAX_HASHTAG_SYMBOLS} символов`
+      check: inputArray.some((item) => !VALID_SYMBOLS.test(item)),
+      error: `5. Недопустимые символы!`
     },
-
+    
     {
       check: inputArray.some((item, num, array) => array.includes(item, num + 1)),
       error: '6. хештеги не должны повторяться'
@@ -90,10 +99,26 @@ const isHashtagsValid = (value) => {
   });
 };
 
+const isCommentValid = (comment) => {
+  if (comment.length === 0) {
+    return true;
+  }
+
+  return comment.length <= MAX_COMMENT_COUNT;
+}
+
 pristine.addValidator (
   hashtagFiled,
   isHashtagsValid,
   error,
+  1,
+  true
+);
+
+pristine.addValidator (
+  commentFiled,
+  isCommentValid,
+  `Не больше ${MAX_COMMENT_COUNT} символов`,
   1,
   true
 );
@@ -117,3 +142,8 @@ pristine.addValidator (
 // }, "Не больше 5 знаков!", 2);
 
 // +++++
+
+
+export {
+  pristine
+}

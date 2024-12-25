@@ -1,4 +1,5 @@
 import { isEscapeKey } from './util';
+import { pristine } from './formValid'
 //==========================
 
 
@@ -30,10 +31,11 @@ const onFormSubmit = (evt) => {
   evt.preventDefault();
 
   //валидирую форму
-  // pristine.validate();
+  pristine.validate();
 };
 
 // функция для отслеживания фокуса в полях формы
+// document.activeElement - текущий сфокусированный элемент на котором будут вызываться события клавиатуры
 const isTextFiledFocused = () => document.activeElement === hashtagFiled || document.activeElement === commentFiled;
 
 // функция для обработчика нажатия Esc
@@ -48,7 +50,7 @@ const onDocumentKeydown = (evt) => {
 const hideModal = () => {
   // сбрасываем все данные для формы и для пристин
   uploadForm.reset();
-  // pristine.reset();
+  pristine.reset();
 
   overlay.classList.add('hidden');
   BodyElement.classList.remove('modal-open');
@@ -57,8 +59,12 @@ const hideModal = () => {
   document.removeEventListener('keydown', onDocumentKeydown);
 };
 
-// функция для обработчика клика по кнопке закрытия МО
-const onCancelBtnClick = () => hideModal();
+// функция для обработчика клика по кнопке закрытия МО аналогично ESC
+const onCancelBtnClick = () => {
+if (!isTextFiledFocused) {
+    hideModal();
+}
+}
 
 // функция открытия МО
 const showModal = () => {
@@ -69,16 +75,13 @@ const showModal = () => {
   document.addEventListener('keydown', onDocumentKeydown);
 };
 
-// функция для обработчика на imgFiled - показать МО
-const onFileInputChange = () => showModal();
-
-
 //==========================
 
-imgFiled.addEventListener('change', onFileInputChange);
-cancelBtn.addEventListener('click', onCancelBtnClick);
-uploadForm.addEventListener('submit', onFormSubmit);
+imgFiled.addEventListener('change', showModal);
 
+// cancelBtn.addEventListener('click', onCancelBtnClick);
+cancelBtn.addEventListener('click', hideModal);
+uploadForm.addEventListener('submit', onFormSubmit);
 //==========================
 
 export {
