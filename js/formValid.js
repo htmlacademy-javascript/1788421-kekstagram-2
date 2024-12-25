@@ -1,7 +1,7 @@
 import {
   uploadForm, // форма
   hashtagFiled, // поле для хештегов
-  commentFiled // поле для комментариев
+  // commentFiled // поле для комментариев
 
 } from './upload-photo-form';
 
@@ -13,7 +13,7 @@ const MAX_HASHTAG_COUNT = 5;
 // максимальная длина хештега
 const MAX_HASHTAG_SYMBOLS = 20;
 
-let errMessage = "";
+let errMessage = '';
 
 const error = () => errMessage;
 
@@ -28,11 +28,11 @@ const pristine = new Pristine(uploadForm, {
   errorTextTag: 'p',
   errorTextClass: 'text-error',
 }, true);
-console.log(pristine);
+// console.log(pristine);
 
 //==========================
 const isHashtagsValid = (value) => {
-  errMessage = "";
+  errMessage = '';
 
   const inputText = value.toLowerCase().trim();
 
@@ -65,7 +65,6 @@ const isHashtagsValid = (value) => {
       error: `4. Недопустимые символы!`
     },
 
-    
     {
       check: inputArray.some((item) => item.length > MAX_HASHTAG_SYMBOLS),
       error: `5. Длина хештега не больше ${MAX_HASHTAG_SYMBOLS} символов`
@@ -88,8 +87,8 @@ const isHashtagsValid = (value) => {
       errMessage = rule.error;
     }
     return !isInvalid;
-  })
-}
+  });
+};
 
 pristine.addValidator (
   hashtagFiled,
@@ -98,7 +97,6 @@ pristine.addValidator (
   1,
   true
 );
-
 
 //==========================
 // +++++ тестовые ф-ции для проверки работает ли пристин
@@ -114,16 +112,8 @@ pristine.addValidator (
 // }, "Вводить только цифры!!!"), 1;
 
 // pristine.addValidator(hashtagFiled, (value) => {
-//   const va.addValidator (
-//   hashtagFiled,
-//   funcErr4,
-//   errorText.err_4,
-//   4,
-//   true
-// );lidLingth = 5;
+//   const validLingth = 5;
 //   return value.length <= validLingth;
 // }, "Не больше 5 знаков!", 2);
 
 // +++++
-
-

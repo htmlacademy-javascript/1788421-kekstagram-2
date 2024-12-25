@@ -29,33 +29,33 @@ const onFormSubmit = (evt) => {
   // отменяю отправку формы по умалчанию
   evt.preventDefault();
 
-  //валидирую форму 
+  //валидирую форму
   // pristine.validate();
-}
+};
 
 // функция для отслеживания фокуса в полях формы
 const isTextFiledFocused = () => document.activeElement === hashtagFiled || document.activeElement === commentFiled;
 
-// функция для обработчика нажатия Esc 
+// функция для обработчика нажатия Esc
 const onDocumentKeydown = (evt) => {
-   if (isEscapeKey(evt) && !isTextFiledFocused()) {
+  if (isEscapeKey(evt) && !isTextFiledFocused()) {
     evt.preventDefault();
     hideModal();
-   }
-}
+  }
+};
 
 // функция закрытия МО
 const hideModal = () => {
-// сбрасываем все данные для формы и для пристин
-uploadForm.reset();
-pristine.reset();
+  // сбрасываем все данные для формы и для пристин
+  uploadForm.reset();
+  // pristine.reset();
 
-overlay.classList.add('hidden');
-BodyElement.classList.remove('modal-open');
+  overlay.classList.add('hidden');
+  BodyElement.classList.remove('modal-open');
 
-// убрать обработчик нажатия Esc
-document.removeEventListener('keydown', onDocumentKeydown);
-}
+  // убрать обработчик нажатия Esc
+  document.removeEventListener('keydown', onDocumentKeydown);
+};
 
 // функция для обработчика клика по кнопке закрытия МО
 const onCancelBtnClick = () => hideModal();
@@ -66,8 +66,8 @@ const showModal = () => {
   BodyElement.classList.add('modal-open');
 
   // добавить обработчик нажатия Esc
-document.addEventListener('keydown', onDocumentKeydown);
-}
+  document.addEventListener('keydown', onDocumentKeydown);
+};
 
 // функция для обработчика на imgFiled - показать МО
 const onFileInputChange = () => showModal();
@@ -75,7 +75,7 @@ const onFileInputChange = () => showModal();
 
 //==========================
 
-imgFiled.addEventListener('change', onFileInputChange)
+imgFiled.addEventListener('change', onFileInputChange);
 cancelBtn.addEventListener('click', onCancelBtnClick);
 uploadForm.addEventListener('submit', onFormSubmit);
 
@@ -85,4 +85,4 @@ export {
   uploadForm,
   hashtagFiled,
   commentFiled
-}
+};
