@@ -36,7 +36,7 @@ const pristine = new Pristine(uploadForm, {
   // errorTextTag: 'p',
   // errorTextClass: 'text-error',
 }, true);
-console.log(pristine);
+// console.log(pristine);
 
 //==========================
 const isHashtagsValid = (value) => {
@@ -73,12 +73,11 @@ const isHashtagsValid = (value) => {
       error: `4. Длина хештега не больше ${MAX_HASHTAG_SYMBOLS} символов`
     },
 
-
     {
       check: inputArray.some((item) => !VALID_SYMBOLS.test(item)),
       error: `5. Недопустимые символы!`
     },
-    
+
     {
       check: inputArray.some((item, num, array) => array.includes(item, num + 1)),
       error: '6. хештеги не должны повторяться'
@@ -105,7 +104,7 @@ const isCommentValid = (comment) => {
   }
 
   return comment.length <= MAX_COMMENT_COUNT;
-}
+};
 
 pristine.addValidator (
   hashtagFiled,
@@ -142,8 +141,6 @@ pristine.addValidator (
 // }, "Не больше 5 знаков!", 2);
 
 // +++++
-
-
 export {
   pristine
-}
+};

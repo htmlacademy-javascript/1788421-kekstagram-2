@@ -1,5 +1,5 @@
 import { isEscapeKey } from './util';
-import { pristine } from './formValid'
+import { pristine } from './formValid';
 //==========================
 
 
@@ -22,6 +22,9 @@ const hashtagFiled = document.querySelector('.text__hashtags');
 
 // поле для комментариев
 const commentFiled = document.querySelector('.text__description');
+
+// кнопка отправить
+// const submitBtn = document.querySelector('.img-upload__submit');
 
 //==========================
 
@@ -60,11 +63,11 @@ const hideModal = () => {
 };
 
 // функция для обработчика клика по кнопке закрытия МО аналогично ESC
-const onCancelBtnClick = () => {
-if (!isTextFiledFocused) {
-    hideModal();
-}
-}
+// const onCancelBtnClick = () => {
+//   if (!isTextFiledFocused) {
+//     hideModal();
+//   }
+// };
 
 // функция открытия МО
 const showModal = () => {
@@ -82,6 +85,8 @@ imgFiled.addEventListener('change', showModal);
 // cancelBtn.addEventListener('click', onCancelBtnClick);
 cancelBtn.addEventListener('click', hideModal);
 uploadForm.addEventListener('submit', onFormSubmit);
+
+// submitBtn.addEventListener('submit', )
 //==========================
 
 export {
