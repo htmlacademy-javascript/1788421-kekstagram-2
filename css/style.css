@@ -719,6 +719,15 @@ main {
   position: relative;
 }
 
+.text-error {
+  /* добавила я для пристин */
+  color:rgb(220, 44, 236);
+  font-size: 14px;
+font-weight: 600;
+font-style: italic;
+background-color: #0bdcf8;
+}
+
 
 /**
  * Кнопка для отправки изображения

@@ -10,3 +10,4 @@ rendsrGallery(PhotosArray());
 
 
 import './upload-photo-form.js';
+import './formValid.js';
