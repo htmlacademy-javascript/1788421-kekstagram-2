@@ -21,7 +21,7 @@ const error = () => errMessage;
 
 // const VALID_SYMBOLS = /^#[a-zа-яё0-9]{1,19}$/i;
 
-const VALID_SYMBOLS = /[a-zа-яё0-9]{1,19}$/i;
+const VALID_SYMBOLS = /^[a-zа-яё0-9]{1,19}$/i;
 
 //==========================
 
@@ -35,7 +35,7 @@ const pristine = new Pristine(uploadForm, {
   errorTextParent: 'img-upload__field-wrapper',
   // errorTextTag: 'p',
   // errorTextClass: 'text-error',
-}, true);
+}, false);
 // console.log(pristine);
 
 //==========================
@@ -51,13 +51,56 @@ const isHashtagsValid = (value) => {
 
   const inputArray = inputText.split(' ');
 
+  const hashArray = inputText.split(' ');
+
   const rules = [
+
+    // {
+    //   check: hashArray.some((hash) => hash.slice(1).includes('#')),
+    //   error: ' хэштеги разделяются пробелами',
+    // },
+    // {
+    //   check: hashArray.some((hash) => hash[0] !== '#'),
+    //   error: ' хэштег начинается с символа # (решётка)',
+    // },
+    // {
+    //   check: hashArray.some((hash) => hash === '#'),
+    //   error: ' хеш-тег не может состоять только из одной решётки',
+    // },
+    // {
+    //   check: hashArray.some(
+    //     (hash) => !/^[a-zа-яё0-9]{1,19}$/i.test(hash.slice(1))
+    //   ),
+    //   error: ' строка после решётки должна состоять из букв и чисел',
+    // },
+    // {
+    //   check: hashArray.some((hash) => hash.length > 7),
+    //   error:  `максимальная длина одного хэштега 7 символов, включая решётку,`
+    // },
+    // {
+    //   check: hashArray.length > 5,
+    //   error:  `нельзя указать больше $5 хэштегов`,
+    // },
+    // {
+    //   check: [...new Set(hashArray)].length !== hashArray.length,
+    //   error: ' один и тот же хэштег не может быть использован дважды',
+    // },
+
+    //     {
+    //   check: hashArray.some(
+    //     (hash) => !/^[a-zа-яё0-9]{1,19}$/i.test(hash.slice(1))
+    //   ),
+    //   error: ' строка после решётки должна состоять из букв и чисел',
+    // },
+
+    
     {
       check: inputArray.some((item) => item[0] !== '#'),
       error: '1. хештег должен начинаеться с #'
     },
+
     {
-      // check: inputArray.some((item) => item === '#'),
+      check: inputArray.some((item) => item === '#'),
 
       check: inputArray.some((item) => item.length === 1),
       error: '2. хештег не может состоять только из #'
@@ -74,8 +117,11 @@ const isHashtagsValid = (value) => {
     },
 
     {
-      check: inputArray.some((item) => !VALID_SYMBOLS.test(item)),
-      error: `5. Недопустимые символы!`
+
+    //  check: inputArray.some((item) => !/^#[a-zа-яё0-9]{1,19}$/i.test(item)),
+
+      check: inputArray.some((item) => !VALID_SYMBOLS.test(item.slice(1))),
+      error: `5. Недопустимые символы после #, можно только цифры и буквы`
     },
 
     {
@@ -111,8 +157,7 @@ pristine.addValidator (
   isHashtagsValid,
   error,
   1,
-  true
-);
+  false);
 
 pristine.addValidator (
   commentFiled,

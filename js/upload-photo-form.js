@@ -24,7 +24,7 @@ const hashtagFiled = document.querySelector('.text__hashtags');
 const commentFiled = document.querySelector('.text__description');
 
 // кнопка отправить
-// const submitBtn = document.querySelector('.img-upload__submit');
+const submitBtn = document.querySelector('.img-upload__submit');
 
 //==========================
 
@@ -32,7 +32,7 @@ const commentFiled = document.querySelector('.text__description');
 const onFormSubmit = (evt) => {
   // отменяю отправку формы по умалчанию
   evt.preventDefault();
-
+console.log('клик!');
   //валидирую форму
   pristine.validate();
 };
@@ -62,31 +62,26 @@ const hideModal = () => {
   document.removeEventListener('keydown', onDocumentKeydown);
 };
 
-// функция для обработчика клика по кнопке закрытия МО аналогично ESC
-// const onCancelBtnClick = () => {
-//   if (!isTextFiledFocused) {
-//     hideModal();
-//   }
-// };
-
 // функция открытия МО
 const showModal = () => {
   overlay.classList.remove('hidden');
   BodyElement.classList.add('modal-open');
 
+//валидирую форму
+pristine.validate();
+
   // добавить обработчик нажатия Esc
   document.addEventListener('keydown', onDocumentKeydown);
 };
-
 //==========================
 
 imgFiled.addEventListener('change', showModal);
 
 // cancelBtn.addEventListener('click', onCancelBtnClick);
 cancelBtn.addEventListener('click', hideModal);
-uploadForm.addEventListener('submit', onFormSubmit);
+// uploadForm.addEventListener('submit', onFormSubmit);
 
-// submitBtn.addEventListener('submit', )
+submitBtn.addEventListener('click', onFormSubmit);
 //==========================
 
 export {
