@@ -1,5 +1,7 @@
 import { isEscapeKey } from './util';
-import { pristine } from './formValid';
+// import { pristine } from './formValid';
+import { pristine } from './formValid_19';
+
 //==========================
 
 
@@ -28,12 +30,9 @@ const submitBtn = document.querySelector('.img-upload__submit');
 
 //==========================
 
-// функция для события отправки формы onFormSubmit
+// функция для события отправки формы
 const onFormSubmit = (evt) => {
-  // отменяю отправку формы по умалчанию
   evt.preventDefault();
-console.log('клик!');
-  //валидирую форму
   pristine.validate();
 };
 
@@ -67,8 +66,8 @@ const showModal = () => {
   overlay.classList.remove('hidden');
   BodyElement.classList.add('modal-open');
 
-//валидирую форму
-pristine.validate();
+  //валидирую форму
+  pristine.validate();
 
   // добавить обработчик нажатия Esc
   document.addEventListener('keydown', onDocumentKeydown);

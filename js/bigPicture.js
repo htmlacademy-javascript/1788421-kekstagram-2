@@ -20,8 +20,8 @@ let commentsShown = 0; // счетчик показанных элементов
 
 let comments = []; // массив выводимых комментариев
 
-const commenShownCountElement = bigPictureElem.querySelector('.social__comment-shown-count'); // выведено комментариев
-const commenTotalCountElement = bigPictureElem.querySelector('.social__comment-total-count'); // всего комментариев
+const commentShownCountElement = bigPictureElem.querySelector('.social__comment-shown-count'); // выведено комментариев
+const commentTotalCountElement = bigPictureElem.querySelector('.social__comment-total-count'); // всего комментариев
 
 const commentListElement = bigPictureElem.querySelector('.social__comments'); // спосок комментариев <ul>
 
@@ -29,7 +29,7 @@ const commentsLoaderElement = bigPictureElem.querySelector('.comments-loader'); 
 
 //==========================
 // шаблон с комментарием
-const commentElem = document.querySelector('#comment').content;
+const commentTemplate = document.querySelector('#comment').content;
 
 //==========================
 
@@ -43,7 +43,7 @@ const renderPictureDetails = ({ url, likes, description }) => {
 
 // функция создания комментария
 const createComment = ({ id, avatar, message }) => {
-  const comment = commentElem.cloneNode(true); // полный клон с темплейта
+  const comment = commentTemplate.cloneNode(true); // полный клон с темплейта
 
   const commentImg = comment.querySelector('.social__picture');
   const commentMessage = comment.querySelector('.social__text');
@@ -66,8 +66,8 @@ const renderComments = () => {
   });
 
   commentListElement.append(fragment);
-  commenShownCountElement.textContent = viewComms;
-  commenTotalCountElement.textContent = comments.length;
+  commentShownCountElement.textContent = viewComms;
+  commentTotalCountElement.textContent = comments.length;
 
   if (viewComms >= comments.length) {
     commentsLoaderElement.classList.add('hidden');

@@ -9,5 +9,7 @@ import {
 rendsrGallery(PhotosArray());
 
 
-import './upload-photo-form.js';
-import './formValid.js';
+import './uploadPhotoForm.js';
+
+// import './formValid.js';
+import './formValid_19.js';
