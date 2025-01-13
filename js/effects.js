@@ -60,7 +60,7 @@ const updateSlider = ({ min, max, step }) => {
   slider.noUiSlider.updateOptions({
     range: { min, max },
     step,
-    start: max, 
+    start: max
   });
 };
 
@@ -90,12 +90,11 @@ const initEffect = () => {
   effests.addEventListener('change', onEffectsChange);
 };
 
-//++++++++++++++++++++++++++++ 
+//++++++++++++++++++++++++++++
 const resetEffect = () => {
-  updateSlider(EFFECTS[0].sliderOptions); // КАК УСТАНОВИТЬ НАЧАЛЬНОЕ СОСТОЯНИЕ????
+  chosenEffect = EFFECTS[0];
   effests.removeEventListener('change', onEffectsChange);
 
-  // slider.noUiSlider.off(onSliderUpdate); - как правильно задать параметр для off
   // slider.noUiSlider.destroy();
 };
 
