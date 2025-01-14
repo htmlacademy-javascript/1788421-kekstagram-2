@@ -70,6 +70,87 @@ const AVA = {
   MAX: 6
 };
 
+const EFFECTS = [
+  {
+    name: 'none',
+    effect: {
+      style: '',
+      unit: '',
+    },
+    sliderOptions: {
+      min: 0,
+      max: 1,
+      step: 0.1,
+    },
+  },
+
+  {
+    name: 'chrome',
+    effect: {
+      style: 'grayscale',
+      unit: ' ',
+    },
+    sliderOptions: {
+      min: 0,
+      max: 1,
+      step: 0.1,
+    },
+  },
+
+  {
+    name: 'sepia',
+    effect: {
+      style: 'sepia',
+      unit: ' ',
+    },
+    sliderOptions: {
+      min: 0,
+      max: 1,
+      step: 0.1,
+    },
+  },
+
+  {
+    name: 'marvin',
+    effect: {
+      style: 'invert',
+      unit: '%',
+    },
+    sliderOptions: {
+      min: 0,
+      max: 100,
+      step: 1,
+    },
+  },
+
+  {
+    name: 'phobos',
+    effect: {
+      style: 'blur',
+      unit: 'px',
+    },
+    sliderOptions: {
+      min: 0,
+      max: 3,
+      step: 0.1,
+    },
+  },
+
+  {
+    name: 'heat',
+    effect: {
+      style: 'brightness',
+      unit: ' ',
+    },
+    sliderOptions: {
+      min: 1,
+      max: 3,
+      step: 0.1,
+    },
+  },
+];
+
+
 export {
   DESCRIPTIONS,
   COMMENTS_ARR,
@@ -77,5 +158,6 @@ export {
   PHOTOS_COUNT_MAX,
   LIKES,
   COMMENT,
-  AVA
+  AVA,
+  EFFECTS
 };
