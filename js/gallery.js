@@ -11,7 +11,7 @@ import {
 const container = document.querySelector('.pictures');
 
 
-const rendsrGallery = (pictures) => {
+const renderGallery = (pictures) => {
   container.addEventListener('click', (evt) => {
 
     //целевой элемент, по которому кликнули
@@ -33,4 +33,4 @@ const rendsrGallery = (pictures) => {
   createMiniImgs(pictures, container);
 };
 
-export { rendsrGallery };
+export { renderGallery };

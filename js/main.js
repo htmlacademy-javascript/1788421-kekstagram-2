@@ -3,10 +3,10 @@ import {
 } from './generate-data-array.js';
 
 import {
-  rendsrGallery
+  renderGallery
 } from './gallery.js';
 
-rendsrGallery(PhotosArray());
+renderGallery(PhotosArray());
 
 import './upload-photo-form.js';
 import './scale.js';
