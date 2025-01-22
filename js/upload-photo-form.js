@@ -1,6 +1,5 @@
 import { isEscapeKey } from './util';
-// import { pristine } from './formValid';
-import { pristine } from './formValid_19';
+import { pristine } from './form-valid';
 import { resetScale } from './scale';
 
 import {

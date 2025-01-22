@@ -1,6 +1,6 @@
 import {
   PhotosArray
-} from './generateDataArray.js';
+} from './generate-data-array.js';
 
 import {
   rendsrGallery
@@ -8,10 +8,9 @@ import {
 
 rendsrGallery(PhotosArray());
 
-import './uploadPhotoForm.js';
+import './upload-photo-form.js';
 import './scale.js';
 
-// import './formValid.js';
-import './formValid_19.js';
+import './form-valid.js';
 
 import './effects.js';

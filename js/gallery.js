@@ -1,10 +1,10 @@
 import {
   createMiniImgs
-} from './generateMiniImgs.js';
+} from './generate-mini-imgs.js';
 
 import {
   showBigPicture
-} from './bigPicture.js';
+} from './big-picture.js';
 
 
 // куда вставить все готовые фотки

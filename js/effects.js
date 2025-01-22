@@ -1,6 +1,6 @@
 //ДЗ 9.2 эффекты
 
-import {EFFECTS} from './data';
+import {EFFECTS} from './constants';
 
 const elementUpload = document.querySelector('.img-upload');
 

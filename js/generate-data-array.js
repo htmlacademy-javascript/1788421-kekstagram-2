@@ -12,7 +12,7 @@ import {
   LIKES,
   COMMENT,
   AVA
-} from './data';
+} from './constants';
 
 const generateCommentId = createIdGenerator();
 const generatePhotoId = createIdGenerator();
