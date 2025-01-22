@@ -4,14 +4,14 @@ import { pristine } from './formValid_19';
 import { resetScale } from './scale';
 
 import {
-  initEffect,
+  // initEffect,
   resetEffect
 } from './effects';
 //==========================
 
 const uploadForm = document.querySelector('.img-upload__form');
 
-const BodyElement = document.querySelector('body');
+const bodyElement = document.querySelector('body');
 
 const overlay = document.querySelector('.img-upload__overlay');
 
@@ -35,7 +35,7 @@ const onFormSubmit = (evt) => {
 
 const isTextFiledFocused = () => document.activeElement === hashtagFiled || document.activeElement === commentFiled;
 
-const onDocumentKeydown = (evt) => {
+function onDocumentKeydown(evt) {
   if (isEscapeKey(evt) && !isTextFiledFocused()) {
     evt.preventDefault();
     hideModal();
@@ -50,17 +50,17 @@ const hideModal = () => {
   resetEffect();
 
   overlay.classList.add('hidden');
-  BodyElement.classList.remove('modal-open');
+  bodyElement.classList.remove('modal-open');
 
   document.removeEventListener('keydown', onDocumentKeydown);
 };
 
 const showModal = () => {
   overlay.classList.remove('hidden');
-  BodyElement.classList.add('modal-open');
+  bodyElement.classList.add('modal-open');
 
   pristine.validate();
-  initEffect();
+  // initEffect();
 
   document.addEventListener('keydown', onDocumentKeydown);
 };

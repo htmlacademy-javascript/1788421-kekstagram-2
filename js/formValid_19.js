@@ -4,31 +4,30 @@ const MAX_COMMENT_COUNT = 140;
 const VALID_SYMBOLS = /^#[a-zа-яё0-9]{1,19}$/i;
 
 const uploadForm = document.querySelector('.img-upload__form');
-const hashtagFiled = document.querySelector('.text__hashtags');
-const commentFiled = document.querySelector('.text__description');
+const hashtagFiled = uploadForm.querySelector('.text__hashtags');
+const commentFiled = uploadForm.querySelector('.text__description');
 
 
 const pristine = new Pristine(uploadForm, {
   classTo: 'img-upload__field-wrapper',
   errorTextParent: 'img-upload__field-wrapper',
   errorTextClass: 'img-upload__field-wrapper--error',
-},
-false
+}
 );
 
-const normalaizeTags = (tags) => tags.trim().split(' ');
+const normalizeTags = (tags) => tags.trim().split(' ');
 
 const hasValidTags = (value) => {
   if (value.length === 0) {
     return true;
   }
-  return normalaizeTags(value).every((tag) => VALID_SYMBOLS.test(tag));
+  return normalizeTags(value).every((tag) => VALID_SYMBOLS.test(tag));
 };
 
-const hasValidCount = (value) => normalaizeTags(value).length <= MAX_HASHTAG_COUNT;
+const hasValidCount = (value) => normalizeTags(value).length <= MAX_HASHTAG_COUNT;
 
 const hasUniqueTags = (value) => {
-  const low = normalaizeTags(value).map((tag) => tag.toLowerCase());
+  const low = normalizeTags(value).map((tag) => tag.toLowerCase());
   return low.length === new Set(low).size;
 };
 
@@ -49,7 +48,7 @@ pristine.addValidator(
 pristine.addValidator(
   hashtagFiled,
   hasValidCount,
-  'Не больше 5 хештегов',
+  `Не больше ${MAX_HASHTAG_COUNT} хештегов`,
   3
 );
 
