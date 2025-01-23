@@ -1,12 +1,11 @@
 //ДЗ 9.2 эффекты
 
-import {EFFECTS} from './data';
+import {EFFECTS} from './constants';
 
 const elementUpload = document.querySelector('.img-upload');
 
 const imgPreview = elementUpload.querySelector('.img-upload__preview img');
 
-// список эффектов -почему не ul.effects__list
 const effests = elementUpload.querySelector('.effects');
 
 const sliderContainer = elementUpload.querySelector('.img-upload__effect-level');
@@ -40,7 +39,7 @@ const isDefault = () => chosenEffect.name === 'none';
 
 const setImgStyle = () => {
   if (isDefault()) {
-    imgPreview.style.filter = null;
+    imgPreview.style.filter = '';
     return;
   }
 
@@ -83,22 +82,17 @@ const onEffectsChange = (evt) => {
   setImgStyle();
 };
 
-const initEffect = () => {
-  sliderContainer.classList.add('hidden');
+effests.addEventListener('change', onEffectsChange);
+slider.noUiSlider.on('update', onSliderUpdate);
 
-  slider.noUiSlider.on('update', onSliderUpdate);
-  effests.addEventListener('change', onEffectsChange);
-};
-
-//++++++++++++++++++++++++++++
 const resetEffect = () => {
   chosenEffect = EFFECTS[0];
-  effests.removeEventListener('change', onEffectsChange);
-
-  // slider.noUiSlider.destroy();
+  setImgStyle();
+  sliderContainer.classList.add('hidden');
 };
 
+resetEffect();
+
 export {
-  initEffect,
   resetEffect
 };

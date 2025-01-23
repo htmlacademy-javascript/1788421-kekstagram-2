@@ -1,17 +1,32 @@
-import {
-  PhotosArray
-} from './generateDataArray.js';
-
-import {
-  rendsrGallery
-} from './gallery.js';
-
-rendsrGallery(PhotosArray());
-
-import './uploadPhotoForm.js';
 import './scale.js';
-
-// import './formValid.js';
-import './formValid_19.js';
-
+import './form-valid.js';
 import './effects.js';
+
+import { getData, sendData } from './api';
+import { renderGallery } from './gallery';
+
+import {
+  showAlert,
+  showSuccessMessage,
+  showErrorMessage
+} from './show-message.js';
+
+import { setOnFormSubmit, hideModal } from './upload-photo-form.js';
+
+setOnFormSubmit(async (data) => {
+  try {
+    await sendData(data);
+    hideModal();
+
+    showSuccessMessage();
+  } catch {
+    showErrorMessage();
+  }
+});
+
+try {
+  const data = await getData();
+  renderGallery(data);
+} catch (err) {
+  showAlert(err.message);
+}

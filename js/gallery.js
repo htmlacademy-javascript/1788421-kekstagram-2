@@ -1,20 +1,17 @@
 import {
   createMiniImgs
-} from './generateMiniImgs.js';
+} from './generate-mini-imgs.js';
 
 import {
   showBigPicture
-} from './bigPicture.js';
+} from './big-picture.js';
 
 
-// куда вставить все готовые фотки
 const container = document.querySelector('.pictures');
 
-
-const rendsrGallery = (pictures) => {
+const renderGallery = (pictures) => {
   container.addEventListener('click', (evt) => {
 
-    //целевой элемент, по которому кликнули
     const currentImgNode = evt.target.closest('[data-picture-id]');
 
     if (!currentImgNode) {
@@ -25,7 +22,6 @@ const rendsrGallery = (pictures) => {
 
     const imgId = currentImgNode.dataset.pictureId;
     const currentImg = pictures.find((item) => item.id === +imgId);
-    // console.log(currentImg);
 
     showBigPicture(currentImg);
   });
@@ -33,4 +29,4 @@ const rendsrGallery = (pictures) => {
   createMiniImgs(pictures, container);
 };
 
-export { rendsrGallery };
+export { renderGallery };
