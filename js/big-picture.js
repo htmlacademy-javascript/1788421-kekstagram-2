@@ -1,7 +1,7 @@
 import {
   COUNT_COMMENT_STEP
 } from './constants';
-const BodyElement = document.querySelector('body');
+const bodyElement = document.querySelector('body');
 
 const bigPictureElem = document.querySelector('.big-picture');
 const bigPictureImg = bigPictureElem.querySelector('.big-picture__img img');
@@ -68,7 +68,7 @@ const clearComments = () => {
 
 const hideBigPictyre = () => {
   bigPictureElem.classList.add('hidden');
-  BodyElement.classList.remove('modal-open');
+  bodyElement.classList.remove('modal-open');
 
   document.removeEventListener('keydown', onDocumentKeydown);
   clearComments();
@@ -89,7 +89,7 @@ const showBigPicture = (data) => {
   commentListElement.innerHTML = '';
 
   bigPictureElem.classList.remove('hidden');
-  BodyElement.classList.add('modal-open');
+  bodyElement.classList.add('modal-open');
 
   document.addEventListener('keydown', onDocumentKeydown);
 
