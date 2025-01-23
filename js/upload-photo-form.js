@@ -1,6 +1,6 @@
 import { pristine } from './form-valid';
 import { resetScale } from './scale';
-import { SubmitBtnText } from './constants'
+import { SubmitBtnText } from './constants';
 import {
   resetEffect
 } from './effects';
@@ -18,7 +18,7 @@ const submitBtn = document.querySelector('.img-upload__submit');
 const toggleSubmitBtn = (isDisabled) => {
   submitBtn.disabled = isDisabled;
   submitBtn.textContent = isDisabled ? SubmitBtnText.SUBMITTING : SubmitBtnText.IDLE;
-}
+};
 
 const setOnFormSubmit = (callback) => {
   uploadForm.addEventListener('submit', async (evt) => {
@@ -31,20 +31,12 @@ const setOnFormSubmit = (callback) => {
       toggleSubmitBtn();
     }
   });
-}
+};
 
 const isTextFiledFocused = () => document.activeElement === hashtagFiled || document.activeElement === commentFiled;
 
 const isErrorMessageShown = () => document.querySelector('.error');
 
-const isEscapeKey = (evt) => evt.key === 'Escape';
-
-function onDocumentKeydown(evt) {
-  if (isEscapeKey(evt) && !isTextFiledFocused() && !isErrorMessageShown()) {
-    evt.preventDefault();
-    hideModal();
-  }
-};
 
 const hideModal = () => {
   uploadForm.reset();
@@ -55,6 +47,15 @@ const hideModal = () => {
   bodyElement.classList.remove('modal-open');
   document.removeEventListener('keydown', onDocumentKeydown);
 };
+
+const isEscapeKey = (evt) => evt.key === 'Escape';
+
+function onDocumentKeydown(evt) {
+  if (isEscapeKey(evt) && !isTextFiledFocused() && !isErrorMessageShown()) {
+    evt.preventDefault();
+    hideModal();
+  }
+}
 
 const showModal = () => {
   overlay.classList.remove('hidden');

@@ -1,6 +1,6 @@
 import {
   COUNT_COMMENT_STEP
-} from './constants'
+} from './constants';
 const BodyElement = document.querySelector('body');
 
 const bigPictureElem = document.querySelector('.big-picture');
@@ -9,14 +9,13 @@ const SocialDescription = bigPictureElem.querySelector('.social__caption');
 const bigPictureLikes = bigPictureElem.querySelector('.likes-count');
 const bigPictureBtnCloser = bigPictureElem.querySelector('.big-picture__cancel');
 
-let commentsShown = 0; 
+let commentsShown = 0;
 let comments = [];
 
-const commentShownCountElement = bigPictureElem.querySelector('.social__comment-shown-count'); 
-const commentTotalCountElement = bigPictureElem.querySelector('.social__comment-total-count'); 
-const commentListElement = bigPictureElem.querySelector('.social__comments'); 
-const commentsLoaderElement = bigPictureElem.querySelector('.comments-loader'); 
-
+const commentShownCountElement = bigPictureElem.querySelector('.social__comment-shown-count');
+const commentTotalCountElement = bigPictureElem.querySelector('.social__comment-total-count');
+const commentListElement = bigPictureElem.querySelector('.social__comments');
+const commentsLoaderElement = bigPictureElem.querySelector('.comments-loader');
 const commentTemplate = document.querySelector('#comment').content;
 
 const renderPictureDetails = ({ url, likes, description }) => {
@@ -27,8 +26,7 @@ const renderPictureDetails = ({ url, likes, description }) => {
 };
 
 const createComment = ({ id, avatar, message }) => {
-  const comment = commentTemplate.cloneNode(true); 
-
+  const comment = commentTemplate.cloneNode(true);
   const commentImg = comment.querySelector('.social__picture');
   const commentMessage = comment.querySelector('.social__text');
 
@@ -41,7 +39,7 @@ const createComment = ({ id, avatar, message }) => {
 
 const renderComments = () => {
   const fragment = document.createDocumentFragment();
-  const rendComms = comments.slice(commentsShown, commentsShown + COUNT_STEP);
+  const rendComms = comments.slice(commentsShown, commentsShown + COUNT_COMMENT_STEP);
   const viewComms = rendComms.length + commentsShown;
 
   rendComms.forEach((comment) => {

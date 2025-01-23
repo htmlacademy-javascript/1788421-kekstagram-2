@@ -101,7 +101,7 @@ const Methods = {
 const ErrorText = {
   GET_DATA: 'Не удалось загрузить страницу. Попробуйте обновить',
   SEND_DATA: 'Не удалось отправить форму. Попробуйте еще раз'
-}
+};
 
 export {
   EFFECTS,

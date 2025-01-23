@@ -2,8 +2,8 @@ import './scale.js';
 import './form-valid.js';
 import './effects.js';
 
-import { getData, sendData } from "./api";
-import { renderGallery } from "./gallery";
+import { getData, sendData } from './api';
+import { renderGallery } from './gallery';
 
 import {
   showAlert,
@@ -17,12 +17,9 @@ setOnFormSubmit(async (data) => {
   try {
     await sendData(data);
     hideModal();
-    console.log('Ok!')
 
     showSuccessMessage();
   } catch {
-    console.log('Err!')
-
     showErrorMessage();
   }
 });
@@ -30,7 +27,6 @@ setOnFormSubmit(async (data) => {
 try {
   const data = await getData();
   renderGallery(data);
-}
-catch (err) {
+} catch (err) {
   showAlert(err.message);
-};
+}
