@@ -5,6 +5,14 @@ import {
   resetEffect
 } from './effects';
 
+import {
+  showSuccessMessage,
+  showErrorMessage
+} from './show-message';
+
+import {
+  sendData
+} from './api';
 
 const uploadForm = document.querySelector('.img-upload__form');
 const bodyElement = document.querySelector('body');
@@ -20,24 +28,6 @@ const toggleSubmitBtn = (isDisabled) => {
   submitBtn.textContent = isDisabled ? SubmitBtnText.SUBMITTING : SubmitBtnText.IDLE;
 };
 
-const setOnFormSubmit = (callback) => {
-  uploadForm.addEventListener('submit', async (evt) => {
-    evt.preventDefault();
-    const isValid = pristine.validate();
-
-    if (isValid) {
-      toggleSubmitBtn(true);
-      await callback(new FormData(uploadForm));
-      toggleSubmitBtn();
-    }
-  });
-};
-
-const isTextFiledFocused = () => document.activeElement === hashtagFiled || document.activeElement === commentFiled;
-
-const isErrorMessageShown = () => document.querySelector('.error');
-
-
 const hideModal = () => {
   uploadForm.reset();
   pristine.reset();
@@ -47,6 +37,27 @@ const hideModal = () => {
   bodyElement.classList.remove('modal-open');
   document.removeEventListener('keydown', onDocumentKeydown);
 };
+
+uploadForm.addEventListener('submit', async (evt) => {
+  evt.preventDefault();
+  const isValid = pristine.validate();
+
+  if (isValid) {
+    toggleSubmitBtn(true);
+    try {
+      await sendData(new FormData(uploadForm));
+      hideModal();
+      showSuccessMessage();
+    } catch {
+      showErrorMessage();
+    }
+    toggleSubmitBtn();
+  }
+});
+
+const isTextFiledFocused = () => document.activeElement === hashtagFiled || document.activeElement === commentFiled;
+
+const isErrorMessageShown = () => document.querySelector('.error');
 
 const isEscapeKey = (evt) => evt.key === 'Escape';
 
@@ -66,9 +77,7 @@ const showModal = () => {
 
 imgFiled.addEventListener('change', showModal);
 cancelBtn.addEventListener('click', hideModal);
-submitBtn.addEventListener('click', setOnFormSubmit);
 
-export {
-  setOnFormSubmit,
-  hideModal
-};
+// export {
+//   hideModal
+// };

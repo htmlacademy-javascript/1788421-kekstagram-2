@@ -1,6 +1,5 @@
 const COUNT_COMMENT_STEP = 5;
 
-
 const EFFECTS = [
   {
     name: 'none',
@@ -21,6 +20,7 @@ const EFFECTS = [
       style: 'grayscale',
       unit: ' ',
     },
+
     sliderOptions: {
       min: 0,
       max: 1,
@@ -83,7 +83,7 @@ const EFFECTS = [
 
 const SubmitBtnText = {
   IDLE: 'Отправить',
-  SUBMITTING: 'Отпавляю...'
+  SUBMITTING: 'Отправляю...'
 };
 
 const BASE_URL = ' https://28.javascript.htmlacademy.pro/kekstagram';
@@ -99,7 +99,7 @@ const Methods = {
 };
 
 const ErrorText = {
-  GET_DATA: 'Не удалось загрузить страницу. Попробуйте обновить',
+  GET_DATA: 'Не удалось загрузить страницу. Попробуйте обновить страницу',
   SEND_DATA: 'Не удалось отправить форму. Попробуйте еще раз'
 };
 
