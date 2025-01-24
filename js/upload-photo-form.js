@@ -1,6 +1,6 @@
-import { pristine } from './form-valid';
-import { resetScale } from './scale';
-import { SubmitBtnText } from './constants';
+import { pristine } from './form-valid.js';
+import { resetScale } from './scale.js';
+import { SubmitBtnText } from './constants.js';
 import {
   resetEffect
 } from './effects';

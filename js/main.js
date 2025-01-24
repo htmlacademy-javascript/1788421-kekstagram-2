@@ -2,8 +2,8 @@ import './scale.js';
 import './form-valid.js';
 import './effects.js';
 
-import { getData } from './api';
-import { renderGallery } from './gallery';
+import { getData } from './api.js';
+import { renderGallery } from './gallery.js';
 
 import {
   showAlert,
