@@ -24,7 +24,7 @@ const createThumbnail = ({ id, url, description, comments, likes }) => {
   return thumbnail;
 };
 
-//генерирую 25 элементов и отрисовываю их все сразу в ДОМ через фрагмент
+//генерирую элементы по выбранному фильтру и отрисовываю их все сразу в ДОМ через фрагмент
 const createMiniImgs = (pictures, container) => {
   const fragment = document.createDocumentFragment();
 

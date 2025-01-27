@@ -11,9 +11,15 @@ import {
 
 import './upload-photo-form.js';
 
+import {initFilters} from './filterts.js'
+
+
 try {
   const data = await getData();
   renderGallery(data);
+  initFilters(data);
 } catch (err) {
   showAlert(err.message);
 }
+
+
