@@ -2,31 +2,23 @@ import './scale.js';
 import './form-valid.js';
 import './effects.js';
 
-import { getData, sendData } from './api';
-import { renderGallery } from './gallery';
+import { getData } from './api.js';
+import { renderGallery } from './gallery.js';
 
 import {
   showAlert,
-  showSuccessMessage,
-  showErrorMessage
 } from './show-message.js';
 
-import { setOnFormSubmit, hideModal } from './upload-photo-form.js';
+// import './upload-photo-form.js';
 
-setOnFormSubmit(async (data) => {
-  try {
-    await sendData(data);
-    hideModal();
+import {initFilters} from './filterts.js';
 
-    showSuccessMessage();
-  } catch {
-    showErrorMessage();
-  }
-});
+import './add-photo.js';
 
 try {
   const data = await getData();
   renderGallery(data);
+  initFilters(data);
 } catch (err) {
   showAlert(err.message);
 }

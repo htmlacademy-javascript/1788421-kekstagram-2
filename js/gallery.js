@@ -9,7 +9,12 @@ import {
 
 const container = document.querySelector('.pictures');
 
+const clearGallery = () => {
+  container.querySelectorAll('a.picture').forEach((item) => item.remove());
+};
+
 const renderGallery = (pictures) => {
+
   container.addEventListener('click', (evt) => {
 
     const currentImgNode = evt.target.closest('[data-picture-id]');
@@ -29,4 +34,7 @@ const renderGallery = (pictures) => {
   createMiniImgs(pictures, container);
 };
 
-export { renderGallery };
+export {
+  renderGallery,
+  clearGallery
+};

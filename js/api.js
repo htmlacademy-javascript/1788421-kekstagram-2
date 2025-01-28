@@ -3,7 +3,7 @@ import {
   Route,
   Methods,
   ErrorText
-} from './constants';
+} from './constants.js';
 
 const load = (route, errorText, method = Methods.GET, body = null) =>
   fetch(`${BASE_URL}${route}`, { method, body })

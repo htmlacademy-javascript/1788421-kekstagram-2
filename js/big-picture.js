@@ -1,6 +1,7 @@
 import {
   COUNT_COMMENT_STEP
 } from './constants';
+
 const bodyElement = document.querySelector('body');
 
 const bigPictureElem = document.querySelector('.big-picture');
@@ -38,6 +39,7 @@ const createComment = ({ id, avatar, message }) => {
 };
 
 const renderComments = () => {
+  alert('комментарии!');
   const fragment = document.createDocumentFragment();
   const rendComms = comments.slice(commentsShown, commentsShown + COUNT_COMMENT_STEP);
   const viewComms = rendComms.length + commentsShown;
