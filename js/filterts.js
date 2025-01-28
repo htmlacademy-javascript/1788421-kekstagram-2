@@ -1,4 +1,5 @@
 import { debounce } from './util';
+import {TIMEOUT_DELAY } from './constants.js';
 
 import {
   renderGallery,
@@ -47,7 +48,7 @@ const getFilteredPict = () => {
       filteredPicts = pictures;
   }
 
-  debounce(renderGalleryFiltered(filteredPicts));
+  debounce(renderGalleryFiltered(filteredPicts), TIMEOUT_DELAY);
 };
 
 const onFilterChange = (evt) => {

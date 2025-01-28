@@ -86,7 +86,7 @@ const SubmitBtnText = {
   SUBMITTING: 'Отправляю...'
 };
 
-const BASE_URL = ' https://28.javascript.htmlacademy.pro/kekstagram';
+const BASE_URL = ' https://31.javascript.htmlacademy.pro/kekstagram';
 
 const Route = {
   GET_DATA: '/data',
@@ -103,6 +103,9 @@ const ErrorText = {
   SEND_DATA: 'Не удалось отправить форму. Попробуйте еще раз'
 };
 
+
+const TIMEOUT_DELAY = 500;
+
 export {
   EFFECTS,
   COUNT_COMMENT_STEP,
@@ -111,5 +114,6 @@ export {
   BASE_URL,
   Route,
   Methods,
-  ErrorText
+  ErrorText,
+  TIMEOUT_DELAY
 };
