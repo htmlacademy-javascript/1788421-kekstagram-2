@@ -1,28 +1,25 @@
 //функция для алгоритма тасования Фишера-Йетса
 // создание массива из перемешанных случайно элементов
 function sortRandomy(arr) {
-	let newArr = [...arr];
-	for (let i = newArr.length - 1; i > 0; i--) {
-		let j = Math.floor(Math.random() * (i + 1));
-		[newArr[i], newArr[j]] = [newArr[j], newArr[i]];
-	console.log(j);
+  const newArr = [...arr];
+  for (let i = newArr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [newArr[i], newArr[j]] = [newArr[j], newArr[i]];
+    // console.log(j);
   }
-
-	return newArr;
+  return newArr;
 }
 
 //функция проверки нажатия Esc
 const isEscapeKey = (evt) => evt.key === 'Escape';
 
 // сортировка по колличеству комментариев (по убыванию: b-a)
-const sortByComments = (commA, commB) => {
-  return commB.comments.length - commA.comments.length;
-}
+const sortByComments = (commA, commB) => commB.comments.length - commA.comments.length;
 
 // Функция взята из интернета и доработана
 // Источник - https://www.freecodecamp.org/news/javascript-debounce-example
 
-function debounce (callback, timeoutDelay = 500) {
+function debounce(callback, timeoutDelay = 500) {
   // Используем замыкания, чтобы id таймаута у нас навсегда приклеился к возвращаемой функции с setTimeout, тогда мы его сможем перезаписывать
   let timeoutId;
 

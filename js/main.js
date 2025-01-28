@@ -9,10 +9,11 @@ import {
   showAlert,
 } from './show-message.js';
 
-import './upload-photo-form.js';
+// import './upload-photo-form.js';
 
-import {initFilters} from './filterts.js'
+import {initFilters} from './filterts.js';
 
+import './add-photo.js';
 
 try {
   const data = await getData();
@@ -21,5 +22,3 @@ try {
 } catch (err) {
   showAlert(err.message);
 }
-
-

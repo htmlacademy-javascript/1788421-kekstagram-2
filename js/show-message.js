@@ -2,8 +2,13 @@ const ALERT_SHOW_TIME = 2000;
 
 const dataErrorTemplate = document.querySelector('#data-error').content.querySelector('.data-error');
 
-const showAlert = () => {
+const showAlert = (errMessage) => {
   const dataErrorElem = dataErrorTemplate.cloneNode(true);
+
+  if (errMessage) {
+    dataErrorElem.querySelector('.data-error__title').textContent = errMessage;
+  }
+
 
   document.body.append(dataErrorElem);
 

@@ -1,13 +1,14 @@
 import { debounce } from './util';
 
-import { renderGallery,
+import {
+  renderGallery,
   clearGallery
- } from './gallery.js';
+} from './gallery.js';
 
 import {
   sortRandomy,
   sortByComments
-  } from './util';
+} from './util';
 
 
 const PICTS_COUNT = 10;
@@ -15,7 +16,7 @@ const Filter = {
   default: 'filter-default',
   random: 'filter-random',
   discussed: 'filter-discussed'
-}
+};
 
 const ACTIVE_BTN_CLASS = 'img-filters__button--active';
 const filterElement = document.querySelector('.img-filters');
@@ -24,40 +25,38 @@ let currentFilter = Filter.default;
 let pictures = [];
 
 const renderGalleryFiltered = (filtPict) => {
-clearGallery();
-renderGallery(filtPict);
-}
-
-
+  clearGallery();
+  renderGallery(filtPict);
+};
 
 const getFilteredPict = () => {
   let filteredPicts = [];
   switch (currentFilter) {
-    case Filter.random: 
-    console.log('случайные');
-    filteredPicts = sortRandomy(pictures).slice(0, PICTS_COUNT);
-    break;
+    case Filter.random:
+      console.log('случайные');
+      filteredPicts = sortRandomy(pictures).slice(0, PICTS_COUNT);
+      break;
 
-    case Filter.discussed: 
-    console.log('по комментам');
-    filteredPicts = pictures.toSorted(sortByComments);
-    break;
+    case Filter.discussed:
+      console.log('по комментам');
+      filteredPicts = pictures.toSorted(sortByComments);
+      break;
 
     default:
       console.log('все');
-      filteredPicts = pictures;  
+      filteredPicts = pictures;
   }
 
-  debounce(renderGalleryFiltered (filteredPicts));
-}
+  debounce(renderGalleryFiltered(filteredPicts));
+};
 
 const onFilterChange = (evt) => {
   const clickedBtn = evt.target;
   const activeBtn = filterElement.querySelector(`.${ACTIVE_BTN_CLASS}`);
 
-  if(!clickedBtn.classList.contains('img-filters__button')) {
-    return
-  };
+  if (!clickedBtn.classList.contains('img-filters__button')) {
+    return;
+  }
 
   if (clickedBtn === activeBtn) {
     return;
@@ -70,7 +69,7 @@ const onFilterChange = (evt) => {
   getFilteredPict();
 };
 
-const  initFilters = (pictData) => {
+const initFilters = (pictData) => {
   filterElement.classList.remove('img-filters--inactive');
   filterElement.addEventListener('click', onFilterChange);
 
@@ -79,4 +78,4 @@ const  initFilters = (pictData) => {
 
 export {
   initFilters
-}
+};

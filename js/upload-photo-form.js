@@ -14,11 +14,13 @@ import {
   sendData
 } from './api';
 
+// import {onFileInputChange} from './add-photo.js';
+
 const uploadForm = document.querySelector('.img-upload__form');
 const bodyElement = document.querySelector('body');
 const overlay = document.querySelector('.img-upload__overlay');
 const cancelBtn = document.querySelector('.img-upload__cancel');
-const imgFiled = document.querySelector('#upload-file');
+// const imgField = document.querySelector('#upload-file');
 const hashtagFiled = document.querySelector('.text__hashtags');
 const commentFiled = document.querySelector('.text__description');
 const submitBtn = document.querySelector('.img-upload__submit');
@@ -69,15 +71,19 @@ function onDocumentKeydown(evt) {
 }
 
 const showModal = () => {
+  // alert('showModal');
+  // onFileInputChange();
+
   overlay.classList.remove('hidden');
   bodyElement.classList.add('modal-open');
+
   pristine.validate();
   document.addEventListener('keydown', onDocumentKeydown);
 };
 
-imgFiled.addEventListener('change', showModal);
+// imgField.addEventListener('change', showModal);
 cancelBtn.addEventListener('click', hideModal);
 
-// export {
-//   hideModal
-// };
+export {
+  showModal
+};

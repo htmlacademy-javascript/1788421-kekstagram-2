@@ -11,8 +11,7 @@ const container = document.querySelector('.pictures');
 
 const clearGallery = () => {
   container.querySelectorAll('a.picture').forEach((item) => item.remove());
-}
-
+};
 
 const renderGallery = (pictures) => {
 
@@ -35,6 +34,7 @@ const renderGallery = (pictures) => {
   createMiniImgs(pictures, container);
 };
 
-export { renderGallery,
+export {
+  renderGallery,
   clearGallery
- };
+};
