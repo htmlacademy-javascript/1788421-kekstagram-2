@@ -103,8 +103,29 @@ const ErrorText = {
   SEND_DATA: 'Не удалось отправить форму. Попробуйте еще раз'
 };
 
-
 const TIMEOUT_DELAY = 500;
+
+const PICTS_COUNT = 10;
+const Filter = {
+  default: 'filter-default',
+  random: 'filter-random',
+  discussed: 'filter-discussed'
+};
+
+const ACTIVE_BTN_CLASS = 'img-filters__button--active';
+
+
+const MAX_HASHTAG_COUNT = 5;
+const MAX_COMMENT_COUNT = 140;
+
+const VALID_SYMBOLS = /^#[a-zа-яё0-9]{1,19}$/i;
+
+const STEP_SCALE = 25;
+const MIN_SCALE = 25;
+const MAX_SCALE = 100;
+const DEFAULT_SCALE = 100;
+
+const ALERT_SHOW_TIME = 2000;
 
 export {
   EFFECTS,
@@ -115,5 +136,20 @@ export {
   Route,
   Methods,
   ErrorText,
-  TIMEOUT_DELAY
+  TIMEOUT_DELAY,
+
+  PICTS_COUNT,
+  Filter,
+  ACTIVE_BTN_CLASS,
+
+  MAX_HASHTAG_COUNT,
+  MAX_COMMENT_COUNT,
+  VALID_SYMBOLS,
+
+  STEP_SCALE,
+  MIN_SCALE,
+  MAX_SCALE,
+  DEFAULT_SCALE,
+
+  ALERT_SHOW_TIME
 };

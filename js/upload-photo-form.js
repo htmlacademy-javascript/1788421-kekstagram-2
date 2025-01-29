@@ -1,29 +1,21 @@
 import {
-   pristineReset,
+  pristineReset,
   pristineIsValid
- } from './form-valid.js';
+} from './form-valid.js';
 import { resetScale } from './scale.js';
 import { SubmitBtnText } from './constants.js';
-import {
-  resetEffect
-} from './effects';
-
+import { resetEffect } from './effects.js';
 import {
   showSuccessMessage,
   showErrorMessage
-} from './show-message';
-
-import {
-  sendData
-} from './api';
-
-// import {onFileInputChange} from './add-photo.js';
+} from './show-message.js';
+import { sendData } from './api.js';
+import { isEscapeKey } from './util.js';
 
 const uploadForm = document.querySelector('.img-upload__form');
 const bodyElement = document.querySelector('body');
 const overlay = document.querySelector('.img-upload__overlay');
 const cancelBtn = document.querySelector('.img-upload__cancel');
-// const imgField = document.querySelector('#upload-file');
 const hashtagFiled = document.querySelector('.text__hashtags');
 const commentFiled = document.querySelector('.text__description');
 const submitBtn = document.querySelector('.img-upload__submit');
@@ -46,7 +38,7 @@ const hideModal = () => {
 uploadForm.addEventListener('submit', async (evt) => {
   evt.preventDefault();
 
-  if (pristineIsValid) {
+  if (pristineIsValid()) {
     toggleSubmitBtn(true);
     try {
       await sendData(new FormData(uploadForm));
@@ -60,10 +52,7 @@ uploadForm.addEventListener('submit', async (evt) => {
 });
 
 const isTextFiledFocused = () => document.activeElement === hashtagFiled || document.activeElement === commentFiled;
-
 const isErrorMessageShown = () => document.querySelector('.error');
-
-const isEscapeKey = (evt) => evt.key === 'Escape';
 
 function onDocumentKeydown(evt) {
   if (isEscapeKey(evt) && !isTextFiledFocused() && !isErrorMessageShown()) {
@@ -73,17 +62,12 @@ function onDocumentKeydown(evt) {
 }
 
 const showModal = () => {
-  // alert('showModal');
-  // onFileInputChange();
-
   overlay.classList.remove('hidden');
   bodyElement.classList.add('modal-open');
 
-  // pristineIsValid();
   document.addEventListener('keydown', onDocumentKeydown);
 };
 
-// imgField.addEventListener('change', showModal);
 cancelBtn.addEventListener('click', hideModal);
 
 export {

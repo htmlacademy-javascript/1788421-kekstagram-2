@@ -1,6 +1,12 @@
-const ALERT_SHOW_TIME = 2000;
+import { ALERT_SHOW_TIME } from './constants.js';
 
 const dataErrorTemplate = document.querySelector('#data-error').content.querySelector('.data-error');
+
+const successMessage = document.querySelector('#success').content.querySelector('.success');
+
+const errorMessage = document.querySelector('#error').content.querySelector('.error');
+
+const body = document.querySelector('body');
 
 const showAlert = (errMessage) => {
   const dataErrorElem = dataErrorTemplate.cloneNode(true);
@@ -8,8 +14,6 @@ const showAlert = (errMessage) => {
   if (errMessage) {
     dataErrorElem.querySelector('.data-error__title').textContent = errMessage;
   }
-
-
   document.body.append(dataErrorElem);
 
   setTimeout(() => {
@@ -18,29 +22,21 @@ const showAlert = (errMessage) => {
   );
 };
 
-//+++++++++++++++++++++++++++++++++
-
-const successMessage = document.querySelector('#success').content.querySelector('.success');
-
-const errorMessage = document.querySelector('#error').content.querySelector('.error');
-
-const body = document.querySelector('body');
-
-function onBodyClick (evt) {
+const onBodyClick = (evt) => {
   if (evt.target.closest('.success__inner') || evt.target.closest('.error__inner')) {
     return;
   }
   hideMessage();
-}
+};
 
-function onDocumentKeydown(evt) {
+const onDocumentKeydown = (evt) => {
   if (evt.key === 'Escape') {
     evt.preventDefault();
     hideMessage();
   }
-}
+};
 
-function hideMessage () {
+function hideMessage() {
   const messageElem = document.querySelector('.success') || document.querySelector('.error');
 
   messageElem.remove();

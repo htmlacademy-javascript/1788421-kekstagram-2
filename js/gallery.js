@@ -1,11 +1,9 @@
 import {
   createMiniImgs
 } from './generate-mini-imgs.js';
-
 import {
   showBigPicture
 } from './big-picture.js';
-
 
 const container = document.querySelector('.pictures');
 
@@ -17,7 +15,6 @@ let localPictures = [];
 
 const renderGallery = (pictures) => {
   localPictures = [... pictures];
-
   createMiniImgs(pictures, container);
 };
 

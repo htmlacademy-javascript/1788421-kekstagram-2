@@ -1,6 +1,7 @@
 import {
   COUNT_COMMENT_STEP
-} from './constants';
+} from './constants.js';
+import {isEscapeKey} from './util.js';
 
 const bodyElement = document.querySelector('body');
 
@@ -79,8 +80,6 @@ const onCancelButttonClick = () => {
   hideBigPictyre();
 };
 
-const isEscapeKey = (evt) => evt.key === 'Escape';
-
 function onDocumentKeydown(evt) {
   isEscapeKey(evt);
   hideBigPictyre();
@@ -101,7 +100,6 @@ const showBigPicture = (data) => {
   if (comments.length > 0) {
     renderComments();
   }
-
   commentsLoaderElement.addEventListener('click', onCommentLoaderClick);
 };
 
