@@ -1,7 +1,7 @@
 import { showAlert } from './show-message.js';
 import { showModal } from './upload-photo-form.js';
 
-const FileTypes = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
+import { FileTypes } from './constants.js'
 
 const uploadForm = document.querySelector('.img-upload__form');
 const imgField = uploadForm.querySelector('#upload-file');

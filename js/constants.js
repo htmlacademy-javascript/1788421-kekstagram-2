@@ -114,7 +114,6 @@ const Filter = {
 
 const ACTIVE_BTN_CLASS = 'img-filters__button--active';
 
-
 const MAX_HASHTAG_COUNT = 5;
 const MAX_COMMENT_COUNT = 140;
 
@@ -126,6 +125,8 @@ const MAX_SCALE = 100;
 const DEFAULT_SCALE = 100;
 
 const ALERT_SHOW_TIME = 2000;
+
+const FileTypes = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
 
 export {
   EFFECTS,
@@ -151,5 +152,7 @@ export {
   MAX_SCALE,
   DEFAULT_SCALE,
 
-  ALERT_SHOW_TIME
+  ALERT_SHOW_TIME,
+  
+  FileTypes
 };
