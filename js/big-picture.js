@@ -26,20 +26,19 @@ const renderPictureDetails = ({ url, likes, description }) => {
   bigPictureLikes.textContent = likes;
 };
 
-const createComment = ({ id, avatar, message }) => {
+const createComment = ({ avatar, message, name }) => {
   const comment = commentTemplate.cloneNode(true);
   const commentImg = comment.querySelector('.social__picture');
   const commentMessage = comment.querySelector('.social__text');
 
   commentImg.src = avatar;
-  commentImg.alt = id;
+  commentImg.alt = name;
   commentMessage.textContent = message;
 
   return comment;
 };
 
 const renderComments = () => {
-  alert('комментарии!');
   const fragment = document.createDocumentFragment();
   const rendComms = comments.slice(commentsShown, commentsShown + COUNT_COMMENT_STEP);
   const viewComms = rendComms.length + commentsShown;

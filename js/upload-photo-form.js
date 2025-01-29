@@ -1,4 +1,7 @@
-import { pristine } from './form-valid.js';
+import {
+   pristineReset,
+  pristineIsValid
+ } from './form-valid.js';
 import { resetScale } from './scale.js';
 import { SubmitBtnText } from './constants.js';
 import {
@@ -32,7 +35,7 @@ const toggleSubmitBtn = (isDisabled) => {
 
 const hideModal = () => {
   uploadForm.reset();
-  pristine.reset();
+  pristineReset();
   resetScale();
   resetEffect();
   overlay.classList.add('hidden');
@@ -42,9 +45,8 @@ const hideModal = () => {
 
 uploadForm.addEventListener('submit', async (evt) => {
   evt.preventDefault();
-  const isValid = pristine.validate();
 
-  if (isValid) {
+  if (pristineIsValid) {
     toggleSubmitBtn(true);
     try {
       await sendData(new FormData(uploadForm));
@@ -77,7 +79,7 @@ const showModal = () => {
   overlay.classList.remove('hidden');
   bodyElement.classList.add('modal-open');
 
-  pristine.validate();
+  // pristineIsValid();
   document.addEventListener('keydown', onDocumentKeydown);
 };
 

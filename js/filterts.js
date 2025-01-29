@@ -30,6 +30,8 @@ const renderGalleryFiltered = (filtPict) => {
   renderGallery(filtPict);
 };
 
+const debouncedRender = debounce(renderGalleryFiltered, TIMEOUT_DELAY)
+
 const getFilteredPict = () => {
   let filteredPicts = [];
   switch (currentFilter) {
@@ -48,7 +50,7 @@ const getFilteredPict = () => {
       filteredPicts = pictures;
   }
 
-  debounce(renderGalleryFiltered(filteredPicts), TIMEOUT_DELAY);
+  debouncedRender(filteredPicts);
 };
 
 const onFilterChange = (evt) => {

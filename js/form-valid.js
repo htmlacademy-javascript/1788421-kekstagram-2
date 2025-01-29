@@ -15,10 +15,10 @@ const pristine = new Pristine(uploadForm, {
 }
 );
 
-const normalizeTags = (tags) => tags.trim().split(' ');
+const normalizeTags = (tags) => tags.trim().split(' ').filter((elem) => elem.length);
 
 const hasValidTags = (value) => {
-  if (value.length === 0) {
+  if (!value.length) {
     return true;
   }
   return normalizeTags(value).every((tag) => VALID_SYMBOLS.test(tag));
@@ -65,6 +65,10 @@ pristine.addValidator(
   `Не больше ${MAX_COMMENT_COUNT} символов`
 );
 
+const pristineReset = () => pristine.reset();
+const pristineIsValid = () => pristine.validate();
+
 export {
-  pristine
+  pristineReset,
+  pristineIsValid
 };

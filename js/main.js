@@ -1,5 +1,5 @@
 import './scale.js';
-import './form-valid.js';
+// import './form-valid.js'; УБРАТЬ!!!
 import './effects.js';
 
 import { getData } from './api.js';
