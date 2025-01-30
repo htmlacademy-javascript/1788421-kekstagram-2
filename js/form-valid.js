@@ -1,12 +1,12 @@
-const MAX_HASHTAG_COUNT = 5;
-const MAX_COMMENT_COUNT = 140;
-
-const VALID_SYMBOLS = /^#[a-zа-яё0-9]{1,19}$/i;
+import {
+  MAX_HASHTAG_COUNT,
+  MAX_COMMENT_COUNT,
+  VALID_SYMBOLS
+} from './constants.js';
 
 const uploadForm = document.querySelector('.img-upload__form');
 const hashtagFiled = uploadForm.querySelector('.text__hashtags');
 const commentFiled = uploadForm.querySelector('.text__description');
-
 
 const pristine = new Pristine(uploadForm, {
   classTo: 'img-upload__field-wrapper',
@@ -15,10 +15,10 @@ const pristine = new Pristine(uploadForm, {
 }
 );
 
-const normalizeTags = (tags) => tags.trim().split(' ');
+const normalizeTags = (tags) => tags.trim().split(' ').filter((elem) => elem.length);
 
 const hasValidTags = (value) => {
-  if (value.length === 0) {
+  if (!value.length) {
     return true;
   }
   return normalizeTags(value).every((tag) => VALID_SYMBOLS.test(tag));
@@ -65,6 +65,10 @@ pristine.addValidator(
   `Не больше ${MAX_COMMENT_COUNT} символов`
 );
 
+const pristineReset = () => pristine.reset();
+const pristineIsValid = () => pristine.validate();
+
 export {
-  pristine
+  pristineReset,
+  pristineIsValid
 };

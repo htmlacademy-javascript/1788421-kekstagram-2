@@ -1,6 +1,4 @@
-//ДЗ 9.2 эффекты
-
-import {EFFECTS} from './constants';
+import {EFFECTS} from './constants.js';
 
 const elementUpload = document.querySelector('.img-upload');
 
@@ -14,10 +12,7 @@ const slider = sliderContainer.querySelector('.effect-level__slider');
 
 const inputSlider = sliderContainer.querySelector('.effect-level__value');
 
-
 let chosenEffect = EFFECTS[0];
-
-//======================
 
 noUiSlider.create(slider, {
   range: {
@@ -42,7 +37,6 @@ const setImgStyle = () => {
     imgPreview.style.filter = '';
     return;
   }
-
   const st = chosenEffect.effect.style;
   const un = chosenEffect.effect.unit;
   const value = inputSlider.value;
@@ -67,17 +61,14 @@ const setSlider = () => {
   if (isDefault()) {
     sliderContainer.classList.add('hidden');
   } else {
-
     updateSlider(chosenEffect.sliderOptions);
     sliderContainer.classList.remove('hidden');
   }
 };
 
 const onEffectsChange = (evt) => {
-
   const effect = evt.target.value;
   chosenEffect = EFFECTS.find((elem) => elem.name === effect);
-
   setSlider();
   setImgStyle();
 };
