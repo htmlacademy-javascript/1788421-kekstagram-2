@@ -153,6 +153,5 @@ export {
   DEFAULT_SCALE,
 
   ALERT_SHOW_TIME,
-  
   FileTypes
 };
